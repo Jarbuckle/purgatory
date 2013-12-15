@@ -5,25 +5,40 @@ public class LeverTrigger : MonoBehaviour {
 	private enum LeverState {OFF, ON};
 	private LeverState leverState;
 	private bool closeEnoughToLever;
+	private string leverValue;
 
-	// Use this for initialization
-	void Start () {
-		leverState = LeverState.OFF;
-	}
-	
+	private bool leverPulled;
+
 	// Update is called once per frame
 	void Update () {
+		if (leverState == null) {
+			leverState = LeverState.OFF;
+		}
+
 		if (closeEnoughToLever) {
-			if (Input.GetKeyDown("space")) {
-				switch (leverState) {
-					case LeverState.OFF:
-						leverState = LeverState.ON;
-						break;
-					case LeverState.ON:
-						leverState = LeverState.OFF;
-						break;
+			if (Input.GetKeyDown(KeyCode.Space)) {
+				if (leverState != null) {
+					switch (leverState) {
+						case LeverState.OFF:
+							leverState = LeverState.ON;
+							leverValue = "OFF";
+							break;
+						case LeverState.ON:
+							leverState = LeverState.OFF;
+							leverValue = "ON";
+							break;
+						default:
+							Debug.Log("Noooooo");
+							break;
+					}
+				} else {
+					Debug.Log("leverPulled = " + leverPulled);
+					if (!leverPulled) {
+						leverPulled = true;
+					} else {
+						leverPulled = false;
+					}
 				}
-				print (leverState);
 			}
 		}
 	}
@@ -48,5 +63,13 @@ public class LeverTrigger : MonoBehaviour {
 		if (getCloseEnoughToLever()) {
 			GUI.Label (new Rect (Screen.width/2,Screen.height/2,100,50), "Press Space Bar to interact with lever");
 		}
+	}
+
+	public bool isLeverOn() {
+		return this.leverState == LeverState.ON;
+	}
+
+	public bool isLeverPulled() {
+		return this.leverPulled == true;
 	}
 }
