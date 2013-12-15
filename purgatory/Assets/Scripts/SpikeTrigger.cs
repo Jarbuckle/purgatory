@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class SpikeTrigger : MonoBehaviour {
-	private enum HealthState {ALIVE, DEAD};
 	private GameObject spawn;
 	private GameObject player;
 	private PlayerHealth playerHealth;
@@ -15,7 +14,7 @@ public class SpikeTrigger : MonoBehaviour {
 
 	void OnTriggerStay(Collider other) {
 		if (other.gameObject.name == "Player") {
-			playerHealth.setHealthState(HealthState.DEAD);
+			playerHealth.setAlive(false);
 			player = other.gameObject;
 			if (!playerHealth.IsAlive()) {
 				StartCoroutine("Safe");

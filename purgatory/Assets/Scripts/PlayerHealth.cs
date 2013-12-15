@@ -2,23 +2,21 @@
 using System.Collections;
 
 public class PlayerHealth : MonoBehaviour {
-	private enum HealthState {ALIVE, DEAD};
-	private HealthState healthState;
-	
+	private bool alive;
 	// Use this for initialization
 	void Start () {
-		healthState = HealthState.ALIVE;
+		setAlive(true);
 	}
-
+	
 	public bool IsAlive() {
-		return this.healthState == HealthState.ALIVE;
+		return this.alive == true;
 	}
-
-	public HealthState getHealthState() {
-		return this.healthState;
+	
+	public bool getAlive() {
+		return this.alive;
 	}
-
-	public void setHealthState(HealthState healthState) {
-		this.healthState = healthState;
+	
+	public void setAlive(bool alive) {
+		this.alive = alive;
 	}
 }
