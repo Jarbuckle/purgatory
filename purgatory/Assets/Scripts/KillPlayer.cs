@@ -10,9 +10,6 @@ public class KillPlayer : MonoBehaviour {
 	void Start () {
 		spawn = GameObject.Find("Spawn");
 		playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
-		if (playerHealth.IsAlive()) {
-			Debug.Log("Player is alive");
-		}
 	}
 	
 	// Update is called once per frame
@@ -23,11 +20,17 @@ public class KillPlayer : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.name == "Player") {
 			playerHealth.setAlive(false);
-
+			player = other.gameObject;
 			if (!playerHealth.IsAlive()) {
-				Debug.Log("Player killed");
-				other.gameObject.transform.position = spawn.transform.position;
+				Debug.Log("Starting coroutine");
+				StartCoroutine("Fade");
+				Debug.Log("2 seconds later");
 			}
 		}
+	}
+
+	IEnumerator Fade() {
+		//player.transform.position = spawn.transform.position;
+		yield return new WaitForSeconds(10);
 	}
 }
