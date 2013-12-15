@@ -23,5 +23,6 @@ public class DoorTrigger : MonoBehaviour {
 		//yield return new WaitForSeconds(2);
 		yield return player.DisablePlayer(2.0f);
 		Application.LoadLevel("level2");
+		yield return null;
 	}
 }

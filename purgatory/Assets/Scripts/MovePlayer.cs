@@ -28,16 +28,20 @@ public class MovePlayer : MonoBehaviour {
 			moveDirection = transform.TransformDirection(moveDirection);
 			moveDirection *= speed;
 
-			if (moveDirection.magnitude >= .1) 
-				anim.SetBool("PlayerWalking",true);
-			else 
-				anim.SetBool("PlayerWalking",false);
 
 			if (moveDirection.x > 0)
 				transform.localScale = new Vector3(1,1,1);
 			if (moveDirection.x < 0)
 				transform.localScale = new Vector3(-1,1,1);
 		}
+		else
+			moveDirection = Vector3.zero;
+
+		if (moveDirection.magnitude >= .1) 
+			anim.SetBool("PlayerWalking",true);
+		else 
+			anim.SetBool("PlayerWalking",false);
+
 		moveDirection.y -= gravity * Time.deltaTime;
 		controller.Move(moveDirection * Time.deltaTime);	
 	}

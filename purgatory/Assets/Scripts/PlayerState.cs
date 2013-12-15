@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PlayerState : MonoBehaviour {
-	private bool alive = true;
+	public bool alive = true;
 	private MovePlayer playerMovement;
 		
 	void Awake() {
@@ -10,11 +10,13 @@ public class PlayerState : MonoBehaviour {
 	}
 
 	public IEnumerator KillPlayer() {
+		alive = false;
 		renderer.enabled = false; //Fade effect
-		collider.enabled = false;
 		yield return StartCoroutine(DisablePlayer(2.0f));
 		Respawn();
 		renderer.enabled = true;
+		yield return new WaitForSeconds(.05f);
+		alive = true;
 		yield return null;
 	}
 

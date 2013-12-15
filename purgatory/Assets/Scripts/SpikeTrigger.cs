@@ -2,28 +2,27 @@
 using System.Collections;
 
 public class SpikeTrigger : MonoBehaviour {
-<<<<<<< HEAD
-	private GameObject spawn;
-	private GameObject player;
+
 	private LeverTrigger leverTrigger;
 	private bool isSafe;
-	private PlayerHealth playerHealth;
+	private PlayerState playerHealth;
 
 	// Use this for initialization
 	void Start () {
-		spawn = GameObject.Find("Spawn");
-		playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
+		playerHealth = GameObject.Find("Player").GetComponent<PlayerState>();
 		leverTrigger = GameObject.Find("Lever").GetComponent<LeverTrigger>();
 		isSafe = true;
 	}
 
 	void OnTriggerStay(Collider other) {
 		if (other.gameObject.name == "Player") {
-			player = other.gameObject;
+/*			player = other.gameObject;
 			if (leverTrigger.isLeverPulled()) {
 				isSafe = false;
 				StartCoroutine(Safe(player));
-			}
+			}*/
+			if (playerHealth.alive == true)
+				StartCoroutine(playerHealth.KillPlayer());
 		}
 	}
 
@@ -43,18 +42,4 @@ public class SpikeTrigger : MonoBehaviour {
 			Debug.Log("DEAD!");
 		}
 	}
-=======
-	private PlayerState playerHealth;
-
-	// Use this for initialization
-	void Start () {
-		playerHealth = GameObject.Find("Player").GetComponent<PlayerState>();
-	}
-
-	void OnTriggerStay(Collider other) {
-		if (other.gameObject.tag == "Player") {
-			StartCoroutine(playerHealth.KillPlayer());
-		}
-	}
->>>>>>> Refactored player state, death, respawn
 }
