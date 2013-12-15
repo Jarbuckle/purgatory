@@ -22,15 +22,13 @@ public class KillPlayer : MonoBehaviour {
 			playerHealth.setAlive(false);
 			player = other.gameObject;
 			if (!playerHealth.IsAlive()) {
-				Debug.Log("Starting coroutine");
 				StartCoroutine("Fade");
-				Debug.Log("2 seconds later");
 			}
 		}
 	}
 
 	IEnumerator Fade() {
-		//player.transform.position = spawn.transform.position;
-		yield return new WaitForSeconds(10);
+		yield return new WaitForSeconds(2);
+		player.transform.position = spawn.transform.position;
 	}
 }

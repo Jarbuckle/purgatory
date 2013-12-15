@@ -17,8 +17,13 @@ public class DoorTrigger : MonoBehaviour {
 		if (other.gameObject.name=="Player") {
 			if (inventory.getKey()) {
 				inventory.setKey(false);
-				Application.LoadLevel("level2");
+				StartCoroutine("LoadLevel");
 			}
 		}
+	}
+
+	IEnumerator LoadLevel() {
+		yield return new WaitForSeconds(2);
+		Application.LoadLevel("level2");
 	}
 }
