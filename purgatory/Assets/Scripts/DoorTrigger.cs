@@ -2,28 +2,26 @@
 using System.Collections;
 
 public class DoorTrigger : MonoBehaviour {
-	private Inventory inventory;
+	private PlayerState player;
 	// Use this for initialization
-	void Start () {
-		inventory = GameObject.Find("Player").GetComponent<Inventory>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	void Awake () {
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
 	}
 
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.name=="Player") {
-			if (inventory.getKey()) {
-				inventory.setKey(false);
+			if (player.hasKey == true) {
+				player.hasKey = false;
 				StartCoroutine("LoadLevel");
 			}
 		}
 	}
 
 	IEnumerator LoadLevel() {
-		yield return new WaitForSeconds(2);
+		//yield return new WaitForSeconds(2);
+		yield return player.DisablePlayer(2.0f);
 		Application.LoadLevel("level2");
+		yield return null;
 	}
 }

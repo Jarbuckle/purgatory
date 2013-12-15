@@ -2,28 +2,29 @@
 using System.Collections;
 
 public class SpikeTrigger : MonoBehaviour {
-	private GameObject spawn;
-	private GameObject player;
-	private PlayerHealth playerHealth;
+
+	public int state = 1;
+	private PlayerState playerHealth;
 
 	// Use this for initialization
 	void Start () {
-		spawn = GameObject.Find("Spawn");
-		playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
+		playerHealth = GameObject.Find("Player").GetComponent<PlayerState>();
 	}
 
 	void OnTriggerStay(Collider other) {
-		if (other.gameObject.name == "Player") {
-			playerHealth.setAlive(false);
-			player = other.gameObject;
-			if (!playerHealth.IsAlive()) {
-				StartCoroutine("Safe");
-			}
-		}
+		if (state == 3 && other.gameObject.name == "Player") 
+			if (playerHealth.alive == true)
+				StartCoroutine(playerHealth.KillPlayer());
 	}
 	
-	IEnumerator Safe() {
-		yield return new WaitForSeconds(2);
-		//player.transform.position = spawn.transform.position;
+	public IEnumerator RaiseSpikes(float delay) {
+		state = 2; //Animate spike position
+		yield return new WaitForSeconds(delay);
+		state = 3; //Animate spike position
+		yield return null;
+	}
+
+	public void LowerSpikes() {
+		state = 1; //Animate spike position
 	}
 }
