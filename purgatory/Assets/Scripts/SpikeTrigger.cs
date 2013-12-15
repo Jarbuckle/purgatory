@@ -20,6 +20,7 @@ public class SpikeTrigger : MonoBehaviour {
 		if (other.gameObject.name == "Player") {
 			player = other.gameObject;
 			if (leverTrigger.isLeverPulled()) {
+				isSafe = false;
 				StartCoroutine(Safe(player));
 			}
 		}
@@ -31,11 +32,12 @@ public class SpikeTrigger : MonoBehaviour {
 	}
 	
 	IEnumerator Safe(GameObject player) {
-		isSafe = true;
 		yield return new WaitForSeconds(2);
+		// Popping up
 		yield return new WaitForSeconds(2);
+		// Popped up
 		yield return new WaitForSeconds(2);
-		yield return new WaitForSeconds(2);
+
 		if (!isSafe) {
 			Debug.Log("DEAD!");
 		}
