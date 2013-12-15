@@ -6,21 +6,24 @@ public class MovePlayer : MonoBehaviour {
 	public float jumpSpeed = 8.0F;
 	public float gravity = 20.0F;
 	private Vector3 moveDirection = Vector3.zero;
-	private PlayerHealth playerHealth;
 	private CharacterController controller;
 	private Animator anim;
 	
 
 	// Use this for initialization
-	void Start () {
-		playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
+	void Awake () {
 		controller =  GetComponent<CharacterController>();
 		anim = GetComponent<Animator>();
+		DontDestroyOnLoad(this.gameObject);
 	}
+
 	
 	// Update is called once per frame
 	void Update () {
-		if (/*controller.isGrounded && */playerHealth.IsAlive()) {
+		float xdelta = Input.GetAxis("Horizontal");
+		float ydelta = Input.GetAxis("Vertical");
+
+		if (!Mathf.Approximately(xdelta,0) || !Mathf.Approximately(ydelta,0)) {
 			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 			moveDirection = transform.TransformDirection(moveDirection);
 			moveDirection *= speed;
@@ -34,8 +37,6 @@ public class MovePlayer : MonoBehaviour {
 				transform.localScale = new Vector3(1,1,1);
 			if (moveDirection.x < 0)
 				transform.localScale = new Vector3(-1,1,1);
-
-
 		}
 		moveDirection.y -= gravity * Time.deltaTime;
 		controller.Move(moveDirection * Time.deltaTime);	

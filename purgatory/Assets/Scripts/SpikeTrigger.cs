@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class SpikeTrigger : MonoBehaviour {
+<<<<<<< HEAD
 	private GameObject spawn;
 	private GameObject player;
 	private LeverTrigger leverTrigger;
@@ -42,4 +43,18 @@ public class SpikeTrigger : MonoBehaviour {
 			Debug.Log("DEAD!");
 		}
 	}
+=======
+	private PlayerState playerHealth;
+
+	// Use this for initialization
+	void Start () {
+		playerHealth = GameObject.Find("Player").GetComponent<PlayerState>();
+	}
+
+	void OnTriggerStay(Collider other) {
+		if (other.gameObject.tag == "Player") {
+			StartCoroutine(playerHealth.KillPlayer());
+		}
+	}
+>>>>>>> Refactored player state, death, respawn
 }
