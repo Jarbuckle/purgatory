@@ -11,11 +11,10 @@ public class DoorTrigger : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.name=="Player") {
-			/*if (inventory.getKey()) {
-				inventory.setKey(false);
+			if (player.hasKey == true) {
+				player.hasKey = false;
 				StartCoroutine("LoadLevel");
-			}*/
-			StartCoroutine(LoadLevel());
+			}
 		}
 	}
 

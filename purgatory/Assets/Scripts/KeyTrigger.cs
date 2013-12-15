@@ -3,16 +3,15 @@ using System.Collections;
 
 //[RequireComponent(typeof(AudioSource))]
 public class KeyTrigger : MonoBehaviour {
-	private Inventory inventory;
+	private PlayerState player;
 	// Use this for initialization
 	void Start () {
-		inventory = GameObject.Find("Player").GetComponent<Inventory>();
-		inventory.setKey(false);
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>();
 	}
 
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.name=="Player") {
-			inventory.setKey(true);
+			player.CollectKey();
 			Destroy(gameObject);
 		}
 	}

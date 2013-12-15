@@ -13,11 +13,14 @@ public class MovePlayer : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		controller =  GetComponent<CharacterController>();
-		anim = GetComponent<Animator>();
+		anim = GetComponentInChildren<Animator>();
 		DontDestroyOnLoad(this.gameObject);
 	}
 
-	
+	void Start() {
+
+	}
+
 	// Update is called once per frame
 	void Update () {
 		float xdelta = Input.GetAxis("Horizontal");

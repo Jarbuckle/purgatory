@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerState : MonoBehaviour {
 	public bool alive = true;
 	private MovePlayer playerMovement;
+	public bool hasKey = false;
 		
 	void Awake() {
 		playerMovement = GetComponent<MovePlayer>();
@@ -34,5 +35,9 @@ public class PlayerState : MonoBehaviour {
 	void Respawn() {
 		Transform spawn = GameObject.FindGameObjectWithTag("Respawn").transform;
 		TeleportPlayer(spawn);
+	}
+
+	public void CollectKey() {
+		hasKey = true;
 	}
 }
