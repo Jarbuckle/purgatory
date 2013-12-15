@@ -9,11 +9,6 @@ public class KeyTrigger : MonoBehaviour {
 		inventory.setKey(false);
 	}
 
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.name=="Player") {
 			inventory.setKey(true);
