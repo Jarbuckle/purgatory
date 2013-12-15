@@ -11,9 +11,7 @@ public class Inventory : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (getKey()) {
-			Debug.Log("You have the key");
-		}
+
 	}
 
 	public bool getKey() {
