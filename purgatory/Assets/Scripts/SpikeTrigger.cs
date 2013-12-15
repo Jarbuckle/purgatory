@@ -2,44 +2,29 @@
 using System.Collections;
 
 public class SpikeTrigger : MonoBehaviour {
-	private GameObject spawn;
-	private GameObject player;
-	private LeverTrigger leverTrigger;
-	private bool isSafe;
-	private PlayerHealth playerHealth;
+
+	public int state = 1;
+	private PlayerState playerHealth;
 
 	// Use this for initialization
 	void Start () {
-		spawn = GameObject.Find("Spawn");
-		playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
-		leverTrigger = GameObject.Find("Lever").GetComponent<LeverTrigger>();
-		isSafe = true;
+		playerHealth = GameObject.Find("Player").GetComponent<PlayerState>();
 	}
 
 	void OnTriggerStay(Collider other) {
-		if (other.gameObject.name == "Player") {
-			player = other.gameObject;
-			if (leverTrigger.isLeverPulled()) {
-				isSafe = false;
-				StartCoroutine(Safe(player));
-			}
-		}
-	}
-
-	void OnTriggerExit() {
-		print ("isSafe is safe");
-		isSafe = true;
+		if (state == 3 && other.gameObject.name == "Player") 
+			if (playerHealth.alive == true)
+				StartCoroutine(playerHealth.KillPlayer());
 	}
 	
-	IEnumerator Safe(GameObject player) {
-		yield return new WaitForSeconds(2);
-		// Popping up
-		yield return new WaitForSeconds(2);
-		// Popped up
-		yield return new WaitForSeconds(2);
+	public IEnumerator RaiseSpikes(float delay) {
+		state = 2; //Animate spike position
+		yield return new WaitForSeconds(delay);
+		state = 3; //Animate spike position
+		yield return null;
+	}
 
-		if (!isSafe) {
-			Debug.Log("DEAD!");
-		}
+	public void LowerSpikes() {
+		state = 1; //Animate spike position
 	}
 }
