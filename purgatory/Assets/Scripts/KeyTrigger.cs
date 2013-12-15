@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//[RequireComponent(typeof(AudioSource))]
 public class KeyTrigger : MonoBehaviour {
 	private Inventory inventory;
 	// Use this for initialization
