@@ -7,13 +7,11 @@ public class DisplayText : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		leverTrigger = GameObject.Find("Player").GetComponent<LeverTrigger>();
-		print("awake() leverTrigger is " + leverTrigger);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//leverTrigger = GameObject.Find("Player").GetComponent<LeverTrigger>();
-		//print("update() leverTrigger is " + leverTrigger);
+
 	}
 
 	public void showText() {
