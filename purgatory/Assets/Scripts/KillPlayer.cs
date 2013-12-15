@@ -26,7 +26,7 @@ public class KillPlayer : MonoBehaviour {
 
 			if (!playerHealth.IsAlive()) {
 				Debug.Log("Player killed");
-				//other.gameObject.transform.Translate(new Vector3(0,0,0));
+				other.gameObject.transform.position = spawn.transform.position;
 			}
 		}
 	}
