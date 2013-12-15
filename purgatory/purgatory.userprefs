@@ -1,12 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MovePlayer.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/KeyTrigger.cs">
     <Files>
-      <File FileName="Assets/MovePlayer.cs" Line="22" Column="4" />
+      <File FileName="Assets/Scripts/KeyTrigger.cs" Line="23" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/dbasler1/purgatory/purgatory/Assets/Scripts/KeyTrigger.cs" line="10" />
+      <Breakpoint file="/Users/dbasler1/purgatory/purgatory/Assets/Scripts/KeyTrigger.cs" line="8" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
