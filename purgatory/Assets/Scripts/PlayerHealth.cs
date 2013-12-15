@@ -2,26 +2,23 @@
 using System.Collections;
 
 public class PlayerHealth : MonoBehaviour {
-	private bool alive;
+	private enum HealthState {ALIVE, DEAD};
+	private HealthState healthState;
+	
 	// Use this for initialization
 	void Start () {
-		setAlive(true);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+		healthState = HealthState.ALIVE;
 	}
 
 	public bool IsAlive() {
-		return this.alive == true;
+		return this.healthState == HealthState.ALIVE;
 	}
 
-	public bool getAlive() {
-		return this.alive;
+	public HealthState getHealthState() {
+		return this.healthState;
 	}
 
-	public void setAlive(bool alive) {
-		this.alive = alive;
+	public void setHealthState(HealthState healthState) {
+		this.healthState = healthState;
 	}
 }

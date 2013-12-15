@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class KillPlayer : MonoBehaviour {
+public class SpikeTrigger : MonoBehaviour {
 	private enum HealthState {ALIVE, DEAD};
 	private GameObject spawn;
 	private GameObject player;
@@ -13,18 +13,18 @@ public class KillPlayer : MonoBehaviour {
 		playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
 	}
 
-	void OnTriggerEnter(Collider other) {
+	void OnTriggerStay(Collider other) {
 		if (other.gameObject.name == "Player") {
 			playerHealth.setHealthState(HealthState.DEAD);
 			player = other.gameObject;
 			if (!playerHealth.IsAlive()) {
-				StartCoroutine("Fade");
+				StartCoroutine("Safe");
 			}
 		}
 	}
-
-	IEnumerator Fade() {
+	
+	IEnumerator Safe() {
 		yield return new WaitForSeconds(2);
-		player.transform.position = spawn.transform.position;
+		//player.transform.position = spawn.transform.position;
 	}
 }

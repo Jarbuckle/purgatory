@@ -2,16 +2,29 @@
 using System.Collections;
 
 public class LeverTrigger : MonoBehaviour {
+	private enum LeverState {OFF, ON};
+	private LeverState leverState;
 	private bool closeEnoughToLever;
+
 	// Use this for initialization
 	void Start () {
-	
+		leverState = LeverState.OFF;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (closeEnoughToLever) {
-
+			if (Input.GetKeyDown("space")) {
+				switch (leverState) {
+					case LeverState.OFF:
+						leverState = LeverState.ON;
+						break;
+					case LeverState.ON:
+						leverState = LeverState.OFF;
+						break;
+				}
+				print (leverState);
+			}
 		}
 	}
 
