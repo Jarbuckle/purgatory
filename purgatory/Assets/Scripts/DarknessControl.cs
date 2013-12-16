@@ -12,7 +12,7 @@ public class DarknessControl : MonoBehaviour {
 	}
 
 	void Start() {
-		StartCoroutine(CheckDarkness());
+		//StartCoroutine(CheckDarkness());
 	}
 
 	public void PlayerIsSafe() {
