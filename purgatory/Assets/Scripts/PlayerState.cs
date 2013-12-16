@@ -83,7 +83,6 @@ public class PlayerState : MonoBehaviour {
 					GetComponentInChildren<SpriteRenderer>().color = new Color(1f,belowThreshold,belowThreshold);
 
 					if (isInDanger == false) {
-						print ("Start Music");
 						isInDanger = true;
 						StartCoroutine(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().PlayTrack2());//Fade audio to different music
 					}

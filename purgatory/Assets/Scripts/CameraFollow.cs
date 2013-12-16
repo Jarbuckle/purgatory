@@ -43,7 +43,6 @@ public class CameraFollow : MonoBehaviour {
 
 	IEnumerator FadeTrack(bool fadeTo) {
 		while (true) {
-			print (a.volume);
 			a.volume = fadeTo ? a.volume + Time.deltaTime / 2 : a.volume - Time.deltaTime / 2;
 			if (a.volume <= 0 || a.volume >= 1) {
 				break;

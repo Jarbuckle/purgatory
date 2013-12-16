@@ -3,7 +3,8 @@ using System.Collections;
 
 public class SpikeTrigger : MonoBehaviour {
 
-	public int state = 1;
+	public int state = 3;
+	public float delay = .5f;
 	private PlayerState playerHealth;
 
 	// Use this for initialization
@@ -12,19 +13,36 @@ public class SpikeTrigger : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider other) {
-		if (state == 3 && other.gameObject.name == "Player") 
+		if (state == 3 && other.name == "Player") 
 			if (playerHealth.alive == true)
 				StartCoroutine(playerHealth.KillPlayer());
 	}
 	
 	public IEnumerator RaiseSpikes(float delay) {
-		state = 2; //Animate spike position
-		yield return new WaitForSeconds(delay);
-		state = 3; //Animate spike position
+		if (delay != 0) {
+			state = 2; //Animate spike position, sound effect w/ pitch randomness
+			yield return new WaitForSeconds(delay);
+		}
+		state = 3; //Animate spike position, sound effect w/ pitch randomness
 		yield return null;
 	}
 
 	public void LowerSpikes() {
-		state = 1; //Animate spike position
+		state = 1; //Animate spike position, sound effect w/ pitch randomness
+	}
+
+	public void ToggleState() {
+		if (state == 1)
+			RaiseSpikes(delay);
+		else
+			LowerSpikes();
+	}
+
+	public void ToggleStateInstant() {
+		if (state == 1)
+			RaiseSpikes(0);
+		else
+			LowerSpikes();
+
 	}
 }

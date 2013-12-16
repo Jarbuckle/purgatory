@@ -3,25 +3,23 @@ using System.Collections;
 
 public class TrapTrigger : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	public GameObject trapGroup;
+	private TrapGroup t;
+
+	void Awake() {
+		t = trapGroup.GetComponent<TrapGroup>();
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.name=="Player") {
+		if (other.name=="Player") {
+			t.ToggleTraps();
 			Debug.Log("Entered trigger");
 		}
 	}
 
 	void OnTriggerExit(Collider other) {
 		if (other.gameObject.name=="Player") {
-			Debug.Log("Exited trigger");
+			//Debug.Log("Exited trigger");
 		}
 	}
 
