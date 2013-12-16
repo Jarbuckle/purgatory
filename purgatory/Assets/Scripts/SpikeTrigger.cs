@@ -3,51 +3,51 @@ using System.Collections;
 
 public class SpikeTrigger : MonoBehaviour {
 
-	public int state = 3;
-	public float delay = .5f;
+	public int state = 1;
 	private PlayerState playerHealth;
+	private GameObject spikes;
 
 	private Transform spikes;
 
 	// Use this for initialization
-	void Awake () {
-		state = 3;
+	void Start () {
 		playerHealth = GameObject.Find("Player").GetComponent<PlayerState>();
+<<<<<<< HEAD
 		//spikes = GameObject.Find
+=======
+		spikes = GameObject.Find("Spikes");
+	}
+
+	void Update() {
+		StartCoroutine(RaiseSpikes(1.0F));
+		StartCoroutine(LowerSpikes(1.0F));
+>>>>>>> 12f685b7bd8e0a5aeeb97c3280e8cb449f8f4b4d
 	}
 
 	void OnTriggerStay(Collider other) {
-		if (state == 3 && other.name == "Player") 
+		state = 3;
+		print (state ==3 && other.gameObject.name == "Player");
+		if (state == 3 && other.gameObject.name == "Player") 
 			if (playerHealth.alive == true)
 				StartCoroutine(playerHealth.KillPlayer());
 	}
 	
 	public IEnumerator RaiseSpikes(float delay) {
-		if (delay != 0) {
-			state = 2; //Animate spike position, sound effect w/ pitch randomness
-			yield return new WaitForSeconds(delay);
-		}
-		state = 3; //Animate spike position, sound effect w/ pitch randomness
-		yield return null;
+		state = 2; //Animate spike position
+		spikes.audio.Play();
+		yield return new WaitForSeconds (spikes.audio.clip.length);
+
+		//yield return new WaitForSeconds(delay);
+		state = 3; //Animate spike position
+
+		//yield return null;
 	}
 
-	public void LowerSpikes() {
-		state = 1; //Animate spike position, sound effect w/ pitch randomness
-	}
-
-	public void ToggleState() {
-		if (state == 1)
-			StartCoroutine(RaiseSpikes(delay));
-		else
-			LowerSpikes();
-	}
-
-	public void ToggleStateInstant() {
-		if (state == 1)
-			StartCoroutine(RaiseSpikes(0));
-		else
-			LowerSpikes();
-
+	public IEnumerator LowerSpikes(float delay) {
+		state = 1; //Animate spike position
+		spikes.audio.Play();
+		yield return new WaitForSeconds (spikes.audio.clip.length);
+		//yield return new WaitForSeconds(delay);
 	}
 
 	IEnumerator LerpSpikes() {
