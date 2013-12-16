@@ -12,10 +12,10 @@ public class PlayerState : MonoBehaviour {
 
 	public IEnumerator KillPlayer() {
 		alive = false;
-		renderer.enabled = false; //Fade effect
+		//renderer.enabled = false; //Fade effect
 		yield return StartCoroutine(DisablePlayer(2.0f));
 		Respawn();
-		renderer.enabled = true;
+		//renderer.enabled = true;
 		yield return new WaitForSeconds(.05f);
 		alive = true;
 		yield return null;
