@@ -1,11 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+<<<<<<< HEAD
+  <MonoDevelop.Ide.Workbench />
+=======
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/KeyTrigger.cs">
     <Files>
       <File FileName="Assets/Scripts/KeyTrigger.cs" Line="18" Column="46" />
       <File FileName="Assets/Scripts/SpikeTrigger.cs" Line="39" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+>>>>>>> 024b39c1cade4a01f4b506af67a52a0d9bce2dd2
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
