@@ -12,6 +12,10 @@ public class StayintheLight : MonoBehaviour {
 		controlScript = GameObject.Find("DarknessControl").GetComponent<DarknessControl>();
 	}
 
+	void OnTriggerEnter() {
+
+	}
+
 	void OnTriggerStay() {
 		controlScript.PlayerIsSafe();
 	}
