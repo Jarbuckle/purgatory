@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class LeverTrigger : MonoBehaviour {
-	private bool closeEnoughToLever;
+	private bool closeEnoughToLever = false;
 	private string leverValue;
 
 	public bool leverState = false;
@@ -33,7 +33,7 @@ public class LeverTrigger : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		if (getCloseEnoughToLever()) {
+		if (closeEnoughToLever) {
 			GUI.Label (new Rect (Screen.width/2,Screen.height/2,100,50), "Press Space Bar to interact with lever");
 		}
 	}

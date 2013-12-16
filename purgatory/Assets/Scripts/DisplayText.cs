@@ -20,10 +20,6 @@ public class DisplayText : MonoBehaviour {
 		if (leverTrigger == null) {
 			leverTrigger = GameObject.Find("Player").GetComponent<LeverTrigger>();
 		}
-
-		if (leverTrigger != null && leverTrigger.getCloseEnoughToLever()) {
-
-		}
 	}
 
 	void OnGUI () {
