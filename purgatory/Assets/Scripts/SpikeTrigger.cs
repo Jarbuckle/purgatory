@@ -8,7 +8,8 @@ public class SpikeTrigger : MonoBehaviour {
 	private PlayerState playerHealth;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
+		state = 3;
 		playerHealth = GameObject.Find("Player").GetComponent<PlayerState>();
 	}
 
@@ -33,14 +34,14 @@ public class SpikeTrigger : MonoBehaviour {
 
 	public void ToggleState() {
 		if (state == 1)
-			RaiseSpikes(delay);
+			StartCoroutine(RaiseSpikes(delay));
 		else
 			LowerSpikes();
 	}
 
 	public void ToggleStateInstant() {
 		if (state == 1)
-			RaiseSpikes(0);
+			StartCoroutine(RaiseSpikes(0));
 		else
 			LowerSpikes();
 

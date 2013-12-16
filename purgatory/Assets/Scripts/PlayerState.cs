@@ -23,14 +23,15 @@ public class PlayerState : MonoBehaviour {
 	}
 
 	public IEnumerator KillPlayer() {
+		StartCoroutine(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().PlayTrack1());
 		alive = false;
 		//renderer.enabled = false; //Fade effect
 		yield return StartCoroutine(DisablePlayer(2.0f));
 		Respawn();
 		//renderer.enabled = true;
-		yield return new WaitForSeconds(.05f);
-		alive = true;
-		yield return null;
+		//yield return new WaitForSeconds(.05f);
+		//alive = true;
+		//yield return null;
 	}
 
 	public IEnumerator DisablePlayer(float duration) {
@@ -56,6 +57,8 @@ public class PlayerState : MonoBehaviour {
 		Transform spawn = GameObject.FindGameObjectWithTag("Respawn").transform; 
 		TeleportPlayer(spawn);
 		playerIsSafe = true;
+		
+		Application.LoadLevel(0);
 	}
 
 	public void CollectKey() {
@@ -94,8 +97,7 @@ public class PlayerState : MonoBehaviour {
 			}
 			yield return null;
 		}
-		StartCoroutine(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().PlayTrack1());//Fade audio to different music
+		//Fade audio to different music
 		yield return StartCoroutine(KillPlayer());
-		StartCoroutine(InDarkness());
 	}
 }

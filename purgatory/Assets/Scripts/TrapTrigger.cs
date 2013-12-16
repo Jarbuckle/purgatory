@@ -5,6 +5,7 @@ public class TrapTrigger : MonoBehaviour {
 
 	public GameObject trapGroup;
 	private TrapGroup t;
+	private DarknessControl d;
 
 	void Awake() {
 		t = trapGroup.GetComponent<TrapGroup>();
@@ -12,8 +13,10 @@ public class TrapTrigger : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if (other.name=="Player") {
-			t.ToggleTraps();
-			Debug.Log("Entered trigger");
+			if (t != null)
+				t.ToggleTraps();
+			else
+				trapGroup.SetActive(true);
 		}
 	}
 

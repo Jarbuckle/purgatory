@@ -20,4 +20,11 @@ public class TrapGroup : MonoBehaviour {
 			trap.ToggleStateInstant();
 		}
 	}
+
+	public void ResetTraps() {
+		print ("Reset");
+		foreach (SpikeTrigger trap in traps) {
+			trap.RaiseSpikes(0);
+		}
+	}
 }

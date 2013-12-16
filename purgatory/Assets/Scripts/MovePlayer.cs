@@ -14,7 +14,6 @@ public class MovePlayer : MonoBehaviour {
 	void Awake () {
 		controller =  GetComponent<CharacterController>();
 		anim = GetComponentInChildren<Animator>();
-		DontDestroyOnLoad(this.gameObject);
 	}
 
 	void Start() {
