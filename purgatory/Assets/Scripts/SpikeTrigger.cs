@@ -7,10 +7,13 @@ public class SpikeTrigger : MonoBehaviour {
 	public float delay = .5f;
 	private PlayerState playerHealth;
 
+	private Transform spikes;
+
 	// Use this for initialization
 	void Awake () {
 		state = 3;
 		playerHealth = GameObject.Find("Player").GetComponent<PlayerState>();
+		//spikes = GameObject.Find
 	}
 
 	void OnTriggerStay(Collider other) {
@@ -45,5 +48,12 @@ public class SpikeTrigger : MonoBehaviour {
 		else
 			LowerSpikes();
 
+	}
+
+	IEnumerator LerpSpikes() {
+		while (true) {
+			yield return null;
+		}
+		yield return null;
 	}
 }
