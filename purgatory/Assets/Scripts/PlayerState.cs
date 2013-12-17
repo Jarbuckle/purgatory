@@ -10,9 +10,9 @@ public class PlayerState : MonoBehaviour {
 
 	public float lightStartSize = 25f;
 	public float lightMinSize = 5f;
-	public float lightFadeDuration = 60f;
+	public float lightFadeDuration = 300f;
 	private float lightRemaining;
-	public float lightDangerThreshold = 6f;
+	public float lightDangerThreshold = 30f;
 	private bool isInDanger = false;
 	private Light spotlight;
 		
