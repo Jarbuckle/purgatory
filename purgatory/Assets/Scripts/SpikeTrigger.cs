@@ -3,57 +3,69 @@ using System.Collections;
 
 public class SpikeTrigger : MonoBehaviour {
 
-	public int state = 1;
+	public int state = 3;
+	public float delay = 1f;
 	private PlayerState playerHealth;
-	private GameObject spikes;
 
 	private Transform spikes;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
+		state = 3;
 		playerHealth = GameObject.Find("Player").GetComponent<PlayerState>();
-<<<<<<< HEAD
-		//spikes = GameObject.Find
-=======
-		spikes = GameObject.Find("Spikes");
-	}
-
-	void Update() {
-		StartCoroutine(RaiseSpikes(1.0F));
-		StartCoroutine(LowerSpikes(1.0F));
->>>>>>> 12f685b7bd8e0a5aeeb97c3280e8cb449f8f4b4d
+		spikes = transform.Find("spiketrap_spikes");
 	}
 
 	void OnTriggerStay(Collider other) {
-		state = 3;
-		print (state ==3 && other.gameObject.name == "Player");
-		if (state == 3 && other.gameObject.name == "Player") 
+		if (state == 3 && other.name == "Player") 
 			if (playerHealth.alive == true)
 				StartCoroutine(playerHealth.KillPlayer());
 	}
 	
 	public IEnumerator RaiseSpikes(float delay) {
-		state = 2; //Animate spike position
-		spikes.audio.Play();
-		yield return new WaitForSeconds (spikes.audio.clip.length);
-
-		//yield return new WaitForSeconds(delay);
-		state = 3; //Animate spike position
-
-		//yield return null;
-	}
-
-	public IEnumerator LowerSpikes(float delay) {
-		state = 1; //Animate spike position
-		spikes.audio.Play();
-		yield return new WaitForSeconds (spikes.audio.clip.length);
-		//yield return new WaitForSeconds(delay);
-	}
-
-	IEnumerator LerpSpikes() {
-		while (true) {
-			yield return null;
+		if (delay != 0) {
+			state = 2; 
+			MoveSpikes();//Animate spike position, sound effect w/ pitch randomness
+			yield return new WaitForSeconds(delay);
 		}
+		state = 3; //Animate spike position, sound effect w/ pitch randomness
+		MoveSpikes();
 		yield return null;
+	}
+
+	public void LowerSpikes() {
+		state = 1; //Animate spike position, sound effect w/ pitch randomness
+		MoveSpikes();
+	}
+
+	public void ToggleState() {
+		if (state == 1)
+			StartCoroutine(RaiseSpikes(delay));
+		else
+			LowerSpikes();
+	}
+
+	public void ToggleStateInstant() {
+		if (state == 1)
+			StartCoroutine(RaiseSpikes(0));
+		else
+			LowerSpikes();
+
+	}
+
+	void MoveSpikes() {
+		Vector3 pos = spikes.position;
+		switch (state) {
+		case 1:
+			spikes.position = new Vector3(pos.x, -1, pos.z);
+			break;
+		case 2:
+			spikes.position = new Vector3(pos.x, -.5f, pos.z);
+			break;
+		case 3:
+			spikes.position = new Vector3(pos.x, 0, pos.z);
+			break;
+
+		}
 	}
 }
