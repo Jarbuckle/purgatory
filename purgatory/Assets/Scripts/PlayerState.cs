@@ -10,15 +10,19 @@ public class PlayerState : MonoBehaviour {
 
 	public float lightStartSize = 25f;
 	public float lightMinSize = 5f;
-	public float lightFadeDuration = 60f;
+	public float lightFadeDuration = 300f;
 	private float lightRemaining;
-	public float lightDangerThreshold = 6f;
+	public float lightDangerThreshold = 30f;
 	private bool isInDanger = false;
 	private Light spotlight;
+
+	private GameGUI gui;
 		
 	void Awake() {
 		playerMovement = GetComponent<MovePlayer>();
-
+		gui = GameObject.Find ("GuiControl").GetComponent<GameGUI>();
+		gui.ShowLevelTitle("Guiding Lights");
+		StartCoroutine(DisablePlayer(2));
 		StartCoroutine(InDarkness());
 	}
 
@@ -38,6 +42,7 @@ public class PlayerState : MonoBehaviour {
 		playerMovement.enabled = false;
 		yield return new WaitForSeconds(duration);
 		playerMovement.enabled = true;
+		gui.HideLevelTitle();
 		yield return null;
 	}
 
