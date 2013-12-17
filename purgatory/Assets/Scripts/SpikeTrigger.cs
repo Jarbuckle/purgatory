@@ -5,23 +5,17 @@ public class SpikeTrigger : MonoBehaviour {
 
 	public int state = 1;
 	private PlayerState playerHealth;
-	private GameObject spikes;
-
 	private Transform spikes;
 
 	// Use this for initialization
 	void Start () {
 		playerHealth = GameObject.Find("Player").GetComponent<PlayerState>();
-<<<<<<< HEAD
-		//spikes = GameObject.Find
-=======
 		spikes = GameObject.Find("Spikes");
 	}
 
 	void Update() {
 		StartCoroutine(RaiseSpikes(1.0F));
 		StartCoroutine(LowerSpikes(1.0F));
->>>>>>> 12f685b7bd8e0a5aeeb97c3280e8cb449f8f4b4d
 	}
 
 	void OnTriggerStay(Collider other) {
