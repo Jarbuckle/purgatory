@@ -6,9 +6,11 @@ public class TrapTrigger : MonoBehaviour {
 	public GameObject trapGroup;
 	private TrapGroup t;
 	private DarknessControl d;
+	private AudioSource a;
 
 	void Awake() {
 		t = trapGroup.GetComponent<TrapGroup>();
+		a = GetComponent<AudioSource>();
 	}
 
 	void OnTriggerEnter(Collider other) {
@@ -17,6 +19,7 @@ public class TrapTrigger : MonoBehaviour {
 				t.ToggleTraps();
 			else
 				trapGroup.SetActive(true);
+			a.Play();
 		}
 	}
 

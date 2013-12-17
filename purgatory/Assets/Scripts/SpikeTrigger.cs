@@ -7,12 +7,14 @@ public class SpikeTrigger : MonoBehaviour {
 	public float delay = 1f;
 	private PlayerState playerHealth;
 	private Transform spikes;
+	private AudioSource a;
 	
 	// Use this for initialization
 	void Awake () {
 		state = 3;
 		playerHealth = GameObject.Find("Player").GetComponent<PlayerState>();
-		spikes = transform.Find("Spikes");
+		spikes = transform.Find("spiketrap_spikes");
+		a = GetComponent<AudioSource>();
 	}
 	
 	void OnTriggerStay(Collider other) {
@@ -22,6 +24,8 @@ public class SpikeTrigger : MonoBehaviour {
 	}
 	
 	public IEnumerator RaiseSpikes(float delay) {
+		a.pitch = Random.Range(.8f,1.2f);
+		a.PlayScheduled(Random.Range(.3f,.6f));
 		if (delay != 0) {
 			state = 2; 
 			MoveSpikes();//Animate spike position, sound effect w/ pitch randomness
