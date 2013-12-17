@@ -1,0 +1,39 @@
+Initialize engine version: 4.3.0f4 (e01000627d60)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.3182]
+    Renderer: NVIDIA GeForce GTX 560 Ti  
+    Vendor:   NVIDIA
+    VRAM:     977 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: K:\Users\Piers\Documents\GitHub\purgatory\GuidingLight_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading K:\Users\Piers\Documents\GitHub\purgatory\GuidingLight_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: K:\Users\Piers\Documents\GitHub\purgatory\GuidingLight_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading K:\Users\Piers\Documents\GitHub\purgatory\GuidingLight_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: K:\Users\Piers\Documents\GitHub\purgatory\GuidingLight_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading K:\Users\Piers\Documents\GitHub\purgatory\GuidingLight_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: K:\Users\Piers\Documents\GitHub\purgatory\GuidingLight_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading K:\Users\Piers\Documents\GitHub\purgatory\GuidingLight_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+- Completed reload, in  0.062 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
+UnloadTime: 6.238895 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 5534.
+Total: 0.999902 ms (FindLiveObjects: 0.163208 ms CreateObjectMapping: 0.039636 ms MarkObjects: 0.426340 ms  DeleteObjects: 0.007993 ms)
+
+UnloadTime: 7.284762 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 5534.
+Total: 1.160779 ms (FindLiveObjects: 0.162542 ms CreateObjectMapping: 0.139893 ms MarkObjects: 0.500617 ms  DeleteObjects: 0.019984 ms)
+
+UnloadTime: 6.738513 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 5534.
+Total: 1.131468 ms (FindLiveObjects: 0.170869 ms CreateObjectMapping: 0.052626 ms MarkObjects: 0.539920 ms  DeleteObjects: 0.016320 ms)
+
